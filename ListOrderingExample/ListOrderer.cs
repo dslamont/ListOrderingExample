@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ListOrderingExample
 {
@@ -7,18 +8,20 @@ namespace ListOrderingExample
     /// </summary>
     public class ListOrderer
     {
-        public static List<char> MoveUp(List<char> origList, List<int> indexes)
+        public List<char> MoveUp(List<char> origList, List<int> indexes)
         {
-            List<char> result = new List<char>();
+            List<char> result = new List<char>(origList);
 
+            foreach(int index in indexes)
+            {
+                char tempChar = result[index - 1];
+                result[index - 1] = result[index];
+                result[index] = tempChar;
+            }
+            
             return result;
         }
 
-        public static List<char> MoveDown(List<char> origList, List<int> indexes)
-        {
-            List<char> result = new List<char>();
 
-            return result;
-        }
     }
 }
