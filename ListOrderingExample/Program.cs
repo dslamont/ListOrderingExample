@@ -16,11 +16,19 @@ namespace ListOrderingExample
             Console.Write("Original  List = ");
             testList.ForEach(Console.Write);
 
-            Console.WriteLine("");
-            Console.Write("Reordered List = ");
             ListOrderer orderer = new ListOrderer();
-            List<char> reorderedList = orderer.MoveUp(testList, new List<int> { 3, 4 });
-            reorderedList.ForEach(Console.Write);
+
+            //Console.WriteLine("");
+            //Console.Write("Moved Up List = ");
+            //List<char> movedUpList = orderer.MoveUp(testList, new List<int> { 3, 4 });
+            //movedUpList.ForEach(Console.Write);
+            //Console.WriteLine("");
+            //Console.WriteLine("");
+
+            Console.WriteLine("");
+            List<char> movedDownList = orderer.MoveDown1(testList, new List<int> { 3, 4 });
+            Console.Write("Moved Down List = ");
+            movedDownList.ForEach(Console.Write);
             Console.WriteLine("");
             Console.WriteLine("");
 
