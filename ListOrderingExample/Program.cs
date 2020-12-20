@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ListOrderingExample
 {
@@ -12,21 +13,25 @@ namespace ListOrderingExample
 
 
             List<char> testList = new List<char> { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+            PrintList(testList, "Original List = ");
 
-            Console.Write("Original  List = ");
-            testList.ForEach(Console.Write);
+            //Console.Write("Original  List = ");
+            //testList.ForEach(Console.Write);
+            //Console.WriteLine("");
+
+            List<int> indexesToMove = new List<int> { 3, 4 };
+            List<char> charsToMove = new List<char>();
+            Console.Write("Indexes of Chars to move down = ");
+            foreach (int i in indexesToMove)
+            {
+                charsToMove.Add(testList[i]);
+            }
+            charsToMove.ForEach(Console.Write);
+            Console.WriteLine("");
+            Console.WriteLine("");
 
             ListOrderer orderer = new ListOrderer();
-
-            //Console.WriteLine("");
-            //Console.Write("Moved Up List = ");
-            //List<char> movedUpList = orderer.MoveUp(testList, new List<int> { 3, 4 });
-            //movedUpList.ForEach(Console.Write);
-            //Console.WriteLine("");
-            //Console.WriteLine("");
-
-            Console.WriteLine("");
-            List<char> movedDownList = orderer.MoveDown1(testList, new List<int> { 3, 4 });
+            List<char> movedDownList = orderer.MoveDown(testList, indexesToMove);
             Console.Write("Moved Down List = ");
             movedDownList.ForEach(Console.Write);
             Console.WriteLine("");
@@ -34,6 +39,13 @@ namespace ListOrderingExample
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
+        }
+    
+        private static void PrintList(List<char> list, string header)
+        {
+            Console.Write(header);
+            list.ForEach(Console.Write);
+            Console.WriteLine("");
         }
     }
 }
